@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery SmoothScroll</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	html,body {
+		width: 100%;
+		height: 100%;
+	}
+	#start {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 45px;
+		background: #000;
+		color: #fff;
+		text-align: center;
+		width: 100%;
+		font-size: 28px;
+		line-height: 45px;
+	}
+	#start a {
+		color: #fff;
+	}
+	#container {
+		height: 1000%;
+		background: url(road.png) repeat-y center top;
+	}
+	#cart {
+		position: fixed;
+		top: 60px;
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+	}
+	#foot {
+		position: fixed;
+		text-align: center;
+		width: 100%;
+		background: #000;
+		bottom: 0;
+		font-size: 28px;
+		line-height: 45px;
+	}
+	#foot a {
+		color: #fff;
+	}
+	#stop-position {
+		background: #ffff00;
+		height: 400px;
+		position: absolute;
+		top: 800%;
+		left: 0;
+		width: 100%;
+		font-size: 98px;
+		text-align: center;
+		line-height: 400px;
+	}
+	</style>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28381001-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body id="top">
+	<div id="start">
+		<a href="#goal">START</a>
+	</div>
+	<div id="stop-position">
+		STOP!!
+	</div>
+	<div id="container">
+		
+	</div>
+	<div id="goal"></div>
+	<div id="foot"><a href="#start">戻る</a></div>
+	<div id="cart">
+		<img src="cart.png" alt="" />
+	</div>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../jquery.easing.js"></script>
+<script src="../jquery.smoothScroll.js"></script>
+<script>
+	$("#start a").smoothScroll({
+		duration: 10000,
+		easing: "linear",
+		canceled: function(x,y) {
+			var area = window.innerHeight * 8 + 60;
+			if (y > area && y < area+400) {
+				alert("SUCCESS!!");
+			} else {
+				alert("FAILD...");
+			}
+		}
+	});
+	$("#foot a").smoothScroll({
+		duration: 1000
+	});
+</script>
+</body>
+</html>
