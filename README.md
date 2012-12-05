@@ -13,6 +13,16 @@ http://dev.creatorish.com/demo/smooth-scroll/tile.html
 ・スクロールミニゲーム（ネタ）
 http://dev.creatorish.com/demo/smooth-scroll/game.html
 
+・インライン(overflow)スクロール
+http://dev.creatorish.com/demo/smooth-scroll/inline.html
+
+・任意の位置へのスクロール（JSからスクロール）
+http://dev.creatorish.com/demo/smooth-scroll/position.html
+
+・ギャラリー風サンプル
+http://dev.creatorish.com/demo/smooth-scroll/gallery.html
+
+
 使い方
 ------
 ### HTML ###
@@ -38,6 +48,7 @@ smoothScrollの第一引数でオプションを指定できます。
         easing: "swing",
         duration: 500,
         cancel: true,
+        target: null,
         start: function(x,y) {},
         step: function(x,y){},
         canceled: function(x,y) {},
@@ -47,15 +58,46 @@ smoothScrollの第一引数でオプションを指定できます。
 +    easing: スクロールに使うイージング名。jQuery Easing Pluginが使えます。
 +    duration: スクロール時間
 +    cancel: スクロール開始後にマウスホイール操作やクリック操作が行われたらスクロールを中止するかどうか
++    target: overflow:hiddenまたはautoした要素をスクロールさせる場合はtargetにその要素のセレクタを渡します。
 +    start: スクロールが開始されたときに実行する処理
 +    step: スクロールの度に実行する処理
 +    canceled: スクロールがキャンセルされたときに実行する処理
 +    complete: スクロールが完了したときに実行する処理
 
-TODO
-------
+overflow要素のスクロール
+--------
 
-+    overflow:hiddenやautoの要素のスムーススクロール
+### HTML ###
+
+    <a href="#top" class="hoge">scroll top</a>
+    <a href="#bottom" class="hoge">scroll bottom</a>
+    <!--overflow:hiddenまたはautoとposition:relative;を記述します-->
+    <div id="hoge-content" style="height: 300px; overflow:auto; position: relative;">
+        <!--要素の位置を正確に取得するため、全体をdivで囲みます-->
+        <div>
+            <p id="top">top</p>
+            <p>dummy test</p>
+            ...(略)
+            <p id="bottom">bottom</p>
+        </div>
+    </div>
+
+### JavaScript ###
+
+    $(".hoge").smoothScroll({
+        target: "#hoge-content" //overflowを記述している要素
+    });
+
+JSからのスクロール
+--------
+
+    var smooth = $.fn.smoothScroll();
+    //scroll(x,y);
+    //指定したx,y位置にスクロール
+    scroll.scroll(0,100);
+    //scrollToElement(selector);
+    //指定した要素へスクロール
+    scroll.scrollToElement("#hoge");
 
 ライセンス
 --------

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>jQuery SmoothScroll</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#wrap {
+		width: 600px;
+		margin: 0 auto;
+	}
+	#content {
+		overflow: hidden;
+		width: 480px;
+		height: 360px;
+		margin: 0 auto;
+		border: 1px solid #ccc;
+		position: relative;
+	}
+	#gallery {
+		position: relative;
+		width: 400%;
+	}
+	#gallery > div {
+		float: left;
+	}
+	#list {
+		list-style: none;
+	}
+	#list li {
+		float: left;
+		margin-right: 3px;
+	}
+	#controller {
+		position: relative;
+		width: 480px;
+		clear: both;
+	}
+	#prev {
+		float: left;
+	}
+	#next {
+		float: right;
+	}
+</style>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28381001-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body id="top">
+	<div id="wrap">
+		<div id="content">
+			<div id="gallery">
+				<div id="photo01"><img src="images/01.jpg" alt="" /></div>
+				<div id="photo02"><img src="images/02.jpg" alt="" /></div>
+				<div id="photo03"><img src="images/03.jpg" alt="" /></div>
+				<div id="photo04"><img src="images/04.jpg" alt="" /></div>
+				<div id="photo05"><img src="images/05.jpg" alt="" /></div>
+				<div id="photo06"><img src="images/06.jpg" alt="" /></div>
+				<div id="photo07"><img src="images/07.jpg" alt="" /></div>
+				<div id="photo08"><img src="images/02.jpg" alt="" /></div>
+			</div>
+		</div>
+		<ul id="list">
+			<li><a href="#photo01"><img src="images/thumb/01.jpg" alt="" /></a></li>
+			<li><a href="#photo02"><img src="images/thumb/02.jpg" alt="" /></a></li>
+			<li><a href="#photo03"><img src="images/thumb/03.jpg" alt="" /></a></li>
+			<li><a href="#photo04"><img src="images/thumb/04.jpg" alt="" /></a></li>
+			<li><a href="#photo05"><img src="images/thumb/05.jpg" alt="" /></a></li>
+			<li><a href="#photo06"><img src="images/thumb/06.jpg" alt="" /></a></li>
+			<li><a href="#photo07"><img src="images/thumb/07.jpg" alt="" /></a></li>
+			<li><a href="#photo08"><img src="images/thumb/02.jpg" alt="" /></a></li>
+		</ul>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="../jquery.easing.js"></script>
+<script src="../jquery.smoothScroll.js"></script>
+<script>
+	var ss = $("#list a,#controller a").smoothScroll({
+		target: "#content"
+	});
+</script>
+</body>
+</html>
