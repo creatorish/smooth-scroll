@@ -5,8 +5,8 @@
  * 
  * Required: jQuery(http://jquery.com/)
  * License: MIT
- * Update: 2012/12/05
- * Version: 1.0
+ * Update: 2012/12/06
+ * Version: 1.1
  * Author: yuu.creatorish
  * URL: http://creatorish.com
  * PluginURL: http://creatorish.com/lab/5393
@@ -125,8 +125,16 @@ jQuery.fn.smoothScroll = function(op) {
 			if (o.top > c.get(0).scrollHeight - c.innerHeight()) {
 				o.top = c.get(0).scrollHeight - c.innerHeight();
 			}
-		} else if (o.top > document.body.scrollHeight - window.innerHeight) {
-			o.top = document.body.scrollHeight - window.innerHeight;
+			if (o.left > c.get(0).scrollWidth - c.innerWidth()) {
+				o.left = c.get(0).scrollWidth - c.innerWidth();
+			}
+		} else {
+			if (o.top > document.body.scrollHeight - window.innerHeight) {
+				o.top = document.body.scrollHeight - window.innerHeight;
+			}
+			if (o.left > document.body.scrollWidth - window.innerWidth) {
+				o.left = document.body.scrollWidth - window.innerWidth;
+			}
 		}
 		
 		s.stop(true).animate({
